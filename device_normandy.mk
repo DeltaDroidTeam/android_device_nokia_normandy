@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2013 The CyanogenMod Project
+# Copyright (C) 2014 The CyanogenMod Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -100,12 +100,6 @@ PRODUCT_PACKAGES += \
     resize2fs \
     setup_fs
 
-# FM Radio
-PRODUCT_PACKAGES += \
-    FM2 \
-    libqcomfm_jni \
-    qcom.fmradio
-
 # GPS
 PRODUCT_PACKAGES += \
     gps.default \
@@ -149,9 +143,9 @@ PRODUCT_PACKAGES += \
     init.qcom.usb.sh \
     ueventd.qcom.rc \
     init.target.rc \
-    init.qcom.ril.path.sh \
     rmt_storage_recovery \
-    init.recovery.qcom.rc
+    init.recovery.qcom.rc \
+    init.qcom.ril.path.sh
 
 # Init scripts
 PRODUCT_PACKAGES += \
@@ -181,11 +175,14 @@ PRODUCT_PACKAGES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     com.qc.hardware=true \
     telephony.lteOnGsmDevice=0 \
-    persist.radio.multisim.config=dsds \
+    ro.telephony.call_ring.delay=3000 \
+    ro.telephony.ril.v3=skippinpukcount,qcomdsds \
     persist.multisim.config=dsds \
-    persist.sys.usb.config=mtp,adb \
+    persist.radio.multisim.config=dsds \
+    ro.multi.rild=true \
+    persist.sys.usb.config=mass_storage,adb \
     wlan.driver.ath=1 \
-    ro.config.low_ram=false
+    ro.config.low_ram=true
 
 # QC Perf
 PRODUCT_PROPERTY_OVERRIDES += \
